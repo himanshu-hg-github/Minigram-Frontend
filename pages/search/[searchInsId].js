@@ -49,6 +49,23 @@ export const getStaticPaths =  async () => {
     
 }
 
+//importing getFilteredPosts function
+import { getFilteredPosts } from "../api";
+
+const [posts, setPosts] = useState([]);
+
+useEffect(() => {
+  const fetchPosts = async () => {
+    const selectedFilter = state.selectedFilter;
+
+    const filteredPosts = await getFilteredPosts(selectedFilter);
+
+    setPosts(filteredPosts);
+  };
+
+  fetchPosts();
+}, [selectedFilter]);
+
 
 
 export default searchDetailPage
