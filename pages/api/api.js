@@ -35,3 +35,12 @@ export const deleteDM = (id) => API.delete(`/conversation/${id}`);
 export const createMessage = (message) => API.post('/messages', message);
 export const getMessages = (id) => API.get(`/messages/${id}`);
 export const deleteMessages = (id) => API.delete(`/messages/${id}`);
+
+//added new export function
+export const getFilteredPosts = async (filter) => {
+  const response = await API.get(`/post/search`, {
+    params: filter,
+  });
+
+  return response.data;
+};
