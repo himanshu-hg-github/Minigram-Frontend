@@ -12,6 +12,22 @@ const searchDetailPage =  (props) => {
   )
 }
 
+//to filter the posts on the home page by category
+const homePagePosts = await getFilteredPosts({
+  category: "technology",
+});
+
+return (
+  <div>
+    <h1>Home Page</h1>
+    <ul>
+      {homePagePosts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 
 export const getUserByName = async (usrname) => {
     const allUsers = await fetchPosts();
